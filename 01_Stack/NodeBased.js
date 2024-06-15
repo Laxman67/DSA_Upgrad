@@ -27,6 +27,7 @@ class Stack {
       let returnValue = this.top.value;
       this.top = this.top.next;
       this.size--;
+      return returnValue;
     } else {
       console.log('Stack underflow');
     }
@@ -45,12 +46,26 @@ class Stack {
   }
 }
 
-var s = new Stack();
-s.push(1);
-s.pop();
-s.push(12);
-s.push(90);
+// Palindrome Check
 
-s.print();
+let reverseString = new Stack();
+let testSting = 'racecar';
 
-console.log('Top value', s.top.value);
+for (let i = 0; i < testSting.length; i++) {
+  reverseString.push(testSting[i]);
+}
+
+let valid = true;
+
+let i = 0;
+
+while (reverseString.size > 0 && valid) {
+  let charVal = reverseString.pop();
+  console.log(charVal);
+  if (charVal !== testSting[i]) {
+    valid = false;
+  }
+  i++;
+}
+
+console.log(valid);

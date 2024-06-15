@@ -5,18 +5,15 @@ class Stack {
 
   //   empty or
   isEmpty() {
-    if (this.stack.length === 0) {
-      console.log('Empty');
-    } else {
-      console.log('Not Empty');
-    }
+    if (this.stack.length === 0) return false;
+    else true;
   }
   size() {
     return this.stack.length;
   }
 
   //   Push into Stack
-  pus(val) {
+  push(val) {
     this.stack.push(val);
   }
 
@@ -41,16 +38,37 @@ class Stack {
   }
 }
 
-let s = new Stack();
-s.isEmpty();
-s.pus(1);
-s.pus(90);
-s.peek();
-s.isEmpty();
-s.pus(1121);
+// Check balanced Bracket
+console.log('Checking balanced Bracket');
 
-s.print();
-s.pop();
-s.pop();
-s.pop();
-s.pop();
+let bracketStack = new Stack();
+let testString = '(1+2)';
+let valid = true;
+let i = 0;
+
+while (i <= testString.length && valid) {
+  let charVal = testString.charAt(i);
+
+  if (charVal == '(') {
+    bracketStack.push(charVal);
+    bracketStack.print();
+  } else if (charVal == ')') {
+    if (bracketStack.isEmpty()) {
+      valid = false;
+    } else {
+      bracketStack.print();
+      bracketStack.pop();
+      valid = true;
+      console.log(true);
+      bracketStack.print();
+    }
+  }
+
+  i++;
+}
+
+if (!bracketStack.isEmpty()) {
+  valid = false;
+}
+
+console.log(valid);
