@@ -102,11 +102,11 @@ class LinkedList {
     temp.next = null;
     return temp;
   }
-
+  // This function will  return node's value at the given index
   get(index) {
     if (index < 0 || index >= this.length) return undefined;
     let temp = this.head;
-    for (let i = 0; i < temp; i++) {
+    for (let i = 0; i < index; i++) {
       temp = temp.next;
     }
     return temp;
@@ -125,8 +125,8 @@ function test() {
 test();
 
 /*
-    EXPECTED OUTPUT:
-    ----------------
-    3
-
-*/
+      EXPECTED OUTPUT:
+      ----------------
+      3
+  
+  */
