@@ -144,7 +144,7 @@ class LinkedList {
     this.head = this.tail;
     this.tail = temp;
 
-    let next = temp.next;
+    let next = temp.next; // next of head
     let prev = null;
 
     for (let i = 0; i < this.length; i++) {
@@ -158,9 +158,9 @@ class LinkedList {
   }
 }
 
-let myList = new LinkedList(10);
-myList.push(45);
-myList.push(7);
-myList.set(1, 781);
+let myList = new LinkedList(1);
+myList.push(2);
+myList.push(3);
+myList.reverse();
 
-console.log(myList.get(1));
+console.log(myList);
