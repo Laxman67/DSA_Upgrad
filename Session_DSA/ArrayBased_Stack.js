@@ -19,7 +19,11 @@ class Stack {
     }
   }
   isEmpty() {
-    return this.items.length === 0;
+    if (this.items.length === 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
   top() {
     if (this.items.length == 0) {
@@ -34,18 +38,19 @@ class Stack {
   }
 }
 
-let stack = new Stack();
-stack.top();
-stack.push(1);
+module.exports = Stack;
+// let stack = new Stack();
+// stack.top();
+// stack.push(1);
 
-stack.push(78);
-console.log(stack.isEmpty());
-stack.push('65');
-stack.top();
-// stack.pop();
-// stack.pop();
-// stack.pop();
-// stack.pop();
+// stack.push(78);
 // console.log(stack.isEmpty());
+// stack.push('65');
+// stack.top();
+// // stack.pop();
+// // stack.pop();
+// // stack.pop();
+// // stack.pop();
+// // console.log(stack.isEmpty());
 
-stack.printStack();
+// stack.printStack();

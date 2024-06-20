@@ -51,16 +51,12 @@ while (i <= testString.length && valid) {
 
   if (charVal == '(') {
     bracketStack.push(charVal);
-    bracketStack.print();
   } else if (charVal == ')') {
     if (bracketStack.isEmpty()) {
       valid = false;
     } else {
-      bracketStack.print();
       bracketStack.pop();
       valid = true;
-      console.log(true);
-      bracketStack.print();
     }
   }
 
