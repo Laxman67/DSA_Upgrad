@@ -38,8 +38,10 @@ class LinkedList {
     let pre = this.head;
 
     while (temp.next) {
-      pre = temp;
-      temp = temp.next;
+      //if  temp.next = means node is available
+
+      pre = temp; // pre will be what temp was before and =>
+      temp = temp.next; // temp will point to next node
     }
 
     this.tail = pre;
@@ -93,9 +95,12 @@ class LinkedList {
     if (index < 0 || index >= this.length) return undefined;
 
     let temp = this.head;
+
     for (let i = 0; i < index; i++) {
+      // we are going to index by 0 and less than 1
       temp = temp.next;
     }
+
     return temp;
   }
 
@@ -161,6 +166,4 @@ class LinkedList {
 let myList = new LinkedList(1);
 myList.push(2);
 myList.push(3);
-myList.reverse();
-
-console.log(myList);
+console.log(myList.get(2));
