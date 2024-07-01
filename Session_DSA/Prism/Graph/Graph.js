@@ -6,11 +6,12 @@ class Graph {
   //   Helper Function
   addEdgeHelper(node, adj, weight) {
     if (this.adjList.has(node)) {
+      // if present then get and add into it 
       var presetNode = this.adjList.get(node);
-
-      presetNode.add({ adj, weight });
+// Addign to the existing
+      presetNode.add({ adj, weight }); //add another node
       
-      this.adjList.set(node, presetNode);
+      this.adjList.set(node, presetNode); // append to the adj list
     } else {
       this.adjList.set(node, new Set([{ adj , weight }]));
     }
@@ -40,3 +41,5 @@ G.addEdge('A', 'C', 10);
 G.addEdge('B', 'A', 5);
 
 G.print();
+console.log(G.getAllNodes());
+console.log(G.getEdges("C") ? G.getEdges("C") : "No edges found !");
