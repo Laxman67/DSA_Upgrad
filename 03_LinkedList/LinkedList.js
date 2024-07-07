@@ -51,13 +51,13 @@ class LinkedList {
     if (!this.head) return 'NODE IS NULL';
 
     let temp = this.head;
-    this.head = temp.next;
+    this.head = temp.next; // orthis.head = this.head.next
     temp.next = null;
     this.length--;
     if (this.length == 0) {
       this.tail = null;
     }
-    return this;
+    return temp;
   }
   // add the node to  the beginning of LinkedList
   unshift(value) {
@@ -73,18 +73,81 @@ class LinkedList {
     this.length++;
     return this;
   }
+
+  get(index) {
+    if (index < 0 || index >= this.length) {
+      return undefined;
+    }
+
+    let temp = this.head;
+    for (let i = 0; i < index; i++) {
+      temp = temp.next;
+    }
+
+    return temp;
+  }
+
+  set(index, value) {
+    let temp = this.get(index); // this will get the node present OR not
+
+    if (temp) {
+      // This is execute when node is available
+      temp.value = value; // set the value
+      return true; // come out of the function to stop execution
+    }
+    // return false if the node is not in the LL
+    return false;
+  }
+
+  insert(index, value) {
+    if (index < 0 || index >= this.length) return false;
+    if (index == 0) return this.unshift(value);
+    if (index == this.length) return this.push(value);
+
+    const newNode = new Node(value); // newNode
+    const temp = this.get(index - 1); //it will get the node previous to the current-1
+
+    temp.next = newNode;
+    newNode.next = temp.next;
+    this.length++;
+    return true;
+  }
+
+  remove(index) {
+    if (index < 0 || index >= this.length) return false;
+    if (index == 0) return this.shift();
+    if (index == this.length - 1) return this.pop();
+
+    let before = this.get(index - 1);
+    let temp = before.next;
+    before.next = temp.next;
+    temp.next = null;
+    this.length--;
+    return temp;
+  }
+
+  reverse() {
+    let temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+
+    let next = temp.next;
+    let prev = null;
+
+    for (let i = 0; i < this.length; i++) {
+      next = temp.next;
+      temp.next = prev;
+      prev = temp;
+      temp = next;
+    }
+
+    return this;
+  }
 }
 
-let linkedList = new LinkedList(7);
-linkedList.push(90);
-linkedList.push(70);
-linkedList.push(5);
-linkedList.shift();
-linkedList.shift();
-linkedList.shift();
-linkedList.shift();
-linkedList.push(12);
+let linkedList = new LinkedList(16);
 linkedList.push(7);
-linkedList.unshift(1);
+linkedList.push(91);
+linkedList.reverse();
 
 console.log(linkedList);
